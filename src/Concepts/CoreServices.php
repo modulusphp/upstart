@@ -71,4 +71,14 @@ class CoreServices
   {
     return $this->routerResolver;
   }
+
+  /**
+   * Get application app service resolver
+   *
+   * @return \App\Resolvers\AppServiceResolver:
+   */
+  public function getAppServiceResolver()
+  {
+    return $this->appServiceResolver;
+  }
 }
