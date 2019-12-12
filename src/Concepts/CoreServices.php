@@ -51,4 +51,14 @@ class CoreServices
   {
     return $this->httpFoundation;
   }
+
+  /**
+   * Get application exception handler
+   *
+   * @return \App\Exceptions\Handler
+   */
+  public function getHandler()
+  {
+    return $this->handler;
+  }
 }
