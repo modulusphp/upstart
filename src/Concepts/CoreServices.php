@@ -41,4 +41,14 @@ class CoreServices
     $this->routerResolver     = $routerResolver && class_exists($routerResolver) ? new $routerResolver : null;
     $this->appServiceResolver = $appServiceResolver && class_exists($appServiceResolver) ? (new $appServiceResolver($app)) : null;
   }
+
+  /**
+   * Get application http foundation
+   *
+   * @return \App\Http\HttpFoundation
+   */
+  public function getHttpFoundation()
+  {
+    return $this->httpFoundation;
+  }
 }
