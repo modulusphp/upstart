@@ -61,4 +61,14 @@ class CoreServices
   {
     return $this->handler;
   }
+
+  /**
+   * Get application router resolver
+   *
+   * @return \App\Resolvers\RouterResolver
+   */
+  public function getRouterResolver()
+  {
+    return $this->routerResolver;
+  }
 }
