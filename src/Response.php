@@ -22,6 +22,17 @@ class Response
   }
 
   /**
+   * Prepare exception
+   *
+   * @param \Throwable $exception
+   * @return \Throwable
+   */
+  public static function prepare($exception)
+  {
+    return app('services')->getHandler()->prepare($exception);
+  }
+
+  /**
    * Get application response
    *
    * @param mixed $response
