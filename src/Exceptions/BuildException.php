@@ -35,4 +35,15 @@ class BuildException
     $this->reflected = $this->getObject($exception);
     $this->trace     = $exception->getTrace()[$search];
   }
+
+  /**
+   * Get reflected exception
+   *
+   * @param Exception $exception
+   * @return ReflectionObject
+   */
+  private function getObject($exception)
+  {
+    return new ReflectionObject($exception);
+  }
 }
