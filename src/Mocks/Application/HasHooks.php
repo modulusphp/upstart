@@ -30,4 +30,15 @@ trait HasHooks
   {
     Application::$create = array_merge(Application::$create, [$name]);
   }
+
+  /**
+   * Add new hook
+   *
+   * @param array $hook
+   * @return void
+   */
+  public static function setHook(array $hook)
+  {
+    self::$hooks = array_merge(self::$hooks, $hook);
+  }
 }
