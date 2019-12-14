@@ -27,6 +27,16 @@ class Service
   }
 
   /**
+   * Build and start service
+   *
+   * @return void
+   */
+  protected function boot() : void
+  {
+    //
+  }
+
+  /**
    * Extendable class
    *
    * @param string $class
