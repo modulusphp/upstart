@@ -40,4 +40,14 @@ class Service
   {
     $this->route = new Route;
   }
+
+  /**
+   * Get controller base namespace
+   *
+   * @return string
+   */
+  public function getNamespace() : string
+  {
+    return $this->namespace;
+  }
 }
