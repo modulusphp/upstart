@@ -24,6 +24,21 @@ class Handler
   protected const ERROR_500_TITLE = 'Oops, something is not working';
 
   /**
+   * Prepare the exception
+   *
+   * @param \Exception $exception
+   * @return \Exception $exception
+   */
+  public function prepare($exception)
+  {
+    if ($exception instanceof ModelNotFoundException) {
+      return (new BuildException($exception, ends_with($exception->getMessage(), '].') ? 0 : 3))->make();
+    }
+
+    return $exception;
+  }
+
+  /**
    * Expects rest
    *
    * @param Request $request
