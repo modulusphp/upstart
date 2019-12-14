@@ -81,4 +81,16 @@ trait HasBootableServices
 
     return $this;
   }
+
+  /**
+   * Make application router
+   *
+   * @return Application
+   */
+  private function withRouter()
+  {
+    Router::make($this);
+
+    return $this;
+  }
 }
