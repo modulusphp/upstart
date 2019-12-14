@@ -12,4 +12,11 @@ trait HasResponse
    * @var mixed
    */
   private $response;
+
+  /**
+   * Application $error
+   *
+   * @var mixed
+   */
+  private $error;
 }
