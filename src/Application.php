@@ -7,6 +7,7 @@ use IteratorAggregate;
 use Modulus\Upstart\Mocks\Application\{
   HasBase,
   HasHooks,
+  HasResponse,
   HasPrototyping
 };
 
@@ -14,6 +15,7 @@ class Application implements Countable, IteratorAggregate
 {
   use HasBase;
   use HasHooks;
+  use HasResponse;
   use HasPrototyping;
 
   /**
