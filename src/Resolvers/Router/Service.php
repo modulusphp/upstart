@@ -50,4 +50,14 @@ class Service
   {
     return $this->namespace;
   }
+
+  /**
+   * Build and start service
+   *
+   * @return void
+   */
+  protected function boot() : void
+  {
+    //
+  }
 }
