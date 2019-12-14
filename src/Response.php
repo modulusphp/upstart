@@ -11,6 +11,17 @@ use Modulus\Utility\Groupable;
 class Response
 {
   /**
+   * Handle application errors
+   *
+   * @param Exception $exception
+   * @return mixed
+   */
+  public static function handle($exception)
+  {
+    return app('services')->getHandler()->render(app()->getRequest(), $exception);
+  }
+
+  /**
    * Get application response
    *
    * @param mixed $response
