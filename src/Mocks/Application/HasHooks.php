@@ -12,4 +12,11 @@ trait HasHooks
    * @var array $hooks
    */
   private static $hooks = [];
+
+  /**
+   * A list of classes / services that should be created when they can called.
+   *
+   * @var array $create
+   */
+  private static $create = [];
 }
