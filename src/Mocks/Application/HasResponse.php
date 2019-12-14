@@ -47,4 +47,15 @@ trait HasResponse
   {
     $this->response = $response;
   }
+
+  /**
+   * Set application error
+   *
+   * @param mixed $error
+   * @return void
+   */
+  public function setError($error)
+  {
+    $this->error = $error;
+  }
 }
