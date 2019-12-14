@@ -27,4 +27,14 @@ trait Error
   {
     return $this->statusCode;
   }
+
+  /**
+   * Get view
+   *
+   * @return string
+   */
+  public final function getView()
+  {
+    return $this->view;
+  }
 }
