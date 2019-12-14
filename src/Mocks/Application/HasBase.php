@@ -62,4 +62,15 @@ trait HasBase
   {
     return $this->root . ($path ? ltrim($path, '/') : '');
   }
+
+  /**
+   * Set application $key
+   *
+   * @param string $key
+   * @return bool
+   */
+  public function setKey($key) : bool
+  {
+    return Application::$key ? false : Application::$key = $key;
+  }
 }
