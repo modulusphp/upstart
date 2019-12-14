@@ -93,4 +93,16 @@ trait HasBootableServices
 
     return $this;
   }
+
+  /**
+   * Start application services
+   *
+   * @return Application
+   */
+  private function startTheRest()
+  {
+    $this->services->getAppServiceResolver()->start();
+
+    return $this;
+  }
 }
