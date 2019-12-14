@@ -37,6 +37,24 @@ class BuildException
   }
 
   /**
+   * Make exception
+   *
+   * @return Exception
+   */
+  public final function make()
+  {
+    foreach ($this->trace as $property => $value) {
+      if ($this->reflected->hasProperty($property)) {
+        $prop = $this->reflected->getProperty($property);
+        $prop->setAccessible(true);
+        $prop->setValue($this->exception, $value);
+      }
+    }
+
+    return $this->exception;
+  }
+
+  /**
    * Get reflected exception
    *
    * @param Exception $exception
