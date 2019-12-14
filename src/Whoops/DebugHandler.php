@@ -19,4 +19,12 @@ class DebugHandler extends PrettyPageHandler
   {
     $this->exception = Response::prepare($exception);
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  protected function getException()
+  {
+    return $this->exception;
+  }
 }
