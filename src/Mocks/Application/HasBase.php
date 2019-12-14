@@ -93,4 +93,21 @@ trait HasBase
   {
     return $this->key($raw);
   }
+
+  /**
+   * Get decoded application key
+   *
+   * @return string|null
+   */
+  private function decodedKey()
+  {
+    if (is_string(Application::$key) && str_contains(Application::$key, [':'])) {
+      $hash   = explode(':', Application::$key)[0];
+      $secret = explode(':', Application::$key)[1];
+
+      return $hash == 'base64' ? base64_decode($secret) : $secret;
+    }
+
+    return Application::$key;
+  }
 }
