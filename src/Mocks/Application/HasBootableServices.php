@@ -47,4 +47,22 @@ trait HasBootableServices
 
     return $this;
   }
+
+  /**
+   * Create view component
+   *
+   * @return Application
+   */
+  private function withView()
+  {
+    Accessor::$viewsExtension = $this->config['view']['extension'];
+    Accessor::$viewsEngine    = $this->config['view']['engine'];
+    Accessor::$viewsCache     = $this->config['view']['compiled'];
+    Accessor::$viewsDirectory = $this->config['view']['views'];
+
+    /** load component */
+    if (!$this->kernel) Accessor::requireView();
+
+    return $this;
+  }
 }
