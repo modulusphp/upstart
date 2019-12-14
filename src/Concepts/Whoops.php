@@ -17,6 +17,37 @@ use Modulus\Upstart\Whoops\{
 class Whoops
 {
   /**
+   * Create whoops concept
+   *
+   * @param null|array $config
+   * @return Run
+   */
+  public static function create(array $config = null)
+  {
+    $run     = new Run;
+    $handler = self::getWhoopsHandler($config ?? []);
+
+    /** push handler */
+    $run->pushHandler($handler);
+
+    /** add special handler for ajax requests */
+    if (Misc::isAjaxRequest()) {
+      $run->pushHandler(new JsonResponseHandler);
+    }
+
+    /** handle exceptions */
+    if ($handler instanceof ViewHandler && !config('app.debug')) {
+      $run->pushHandler(function ($exception) { Response::handle($exception); });
+    }
+
+    /** set application error */
+    $run->register();
+    $run->handleShutdown();
+
+    return $run;
+  }
+
+  /**
    * Get whoops handler
    *
    * @param array $config
