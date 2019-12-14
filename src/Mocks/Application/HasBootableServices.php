@@ -34,6 +34,38 @@ trait HasBootableServices
   }
 
   /**
+   * Boot all bootable services
+   *
+   * @return void
+   */
+  private function withServices()
+  {
+    foreach ($this->bootable as $service) {
+
+      if ($service instanceof ApplicationServices) {
+        $service->is_hook($service->start($this), $this);
+
+        $this->withDirectives()
+              ->withView()
+              ->withAliases()
+              ->withRouter()
+              ->startTheRest();
+
+      } else if ($service instanceof BootableService) {
+        $service->is_hook($service->start(), $this);
+
+        if ($service instanceof EnvironmentVariables)
+          $this->setKey($this->env['APP_KEY']);
+
+      }
+    }
+
+    /** Boot cli if app is being called from craftsman */
+    if ($this->kernel)
+      $this->kernel->run();
+  }
+
+  /**
    * Configure view directives
    *
    * @return Application
