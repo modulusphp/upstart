@@ -26,4 +26,11 @@ class BaseException extends Exception
    * @var string
    */
   protected $title = 'Oops, something is not working';
+
+  /**
+   * Application view
+   *
+   * @var string
+   */
+  protected $view;
 }
