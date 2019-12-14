@@ -4,9 +4,16 @@ namespace Modulus\Upstart;
 
 use Countable;
 use IteratorAggregate;
+use Modulus\Upstart\Mocks\Application\{
+  HasBase,
+  HasHooks
+};
 
 class Application implements Countable, IteratorAggregate
 {
+  use HasBase;
+  use HasHooks;
+
   /**
    * Static application
    *
