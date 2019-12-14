@@ -22,6 +22,13 @@ trait HasBase
   private $started = false;
 
   /**
+   * Application key
+   *
+   * @var string $key
+   */
+  private static $key;
+
+  /**
    * Create application
    *
    * @param string $root
