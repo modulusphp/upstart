@@ -28,6 +28,16 @@ trait HasResponse
   private $request;
 
   /**
+   * Get application response
+   *
+   * @return mixed
+   */
+  public function getResponse()
+  {
+    return $this->response;
+  }
+
+  /**
    * Set application response
    *
    * @param mixed $response
