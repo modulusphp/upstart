@@ -15,4 +15,11 @@ class Service
    * @var string
    */
   protected $namespace = 'App\Http\Controllers';
+
+  /**
+   * Redirect route after authentication
+   *
+   * @var string
+   */
+  public const HOME = '/home';
 }
