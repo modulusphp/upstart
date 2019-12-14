@@ -39,6 +39,26 @@ class Handler
   }
 
   /**
+   * Render view errors
+   *
+   * @param \Modulus\Http\Request
+   * @param \Exception $exception
+   * @return mixed
+   */
+  private function toView($request, $exception)
+  {
+    $code = $this->getStatusCode($exception);
+
+    Status::set($code);
+
+    return view($this->getView($exception), [
+      'message' => $this->getMessage($exception),
+      'title' => $this->getTitle($exception),
+      'statusCode' => $code
+    ]);
+  }
+
+  /**
    * Get exception view
    *
    * @param mixed $exception
