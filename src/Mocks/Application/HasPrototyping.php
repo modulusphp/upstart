@@ -34,6 +34,63 @@ trait HasPrototyping
   }
 
   /**
+   * Bind multple methods at the same time
+   *
+   * @param string $class
+   * @param array $methods
+   * @deprecated
+   */
+  public function bindMany(string $class, array $methods)
+  {
+    /**
+     * Map through the functions
+     *
+     * @param Closure $closure
+     */
+    array_map(function ($closure) use ($class) {
+
+      $info = new ReflectionFunction($closure);
+
+      $doc  = explode(PHP_EOL, $info->getDocComment());
+
+      /**
+       * Filter out the stuff that's not needed
+       */
+      array_filter($doc, function($comment) use ($class, $closure) {
+
+        /**
+         * Register a new function if its not commented out
+         */
+        if (str_contains($comment, '@method') && !str_contains($comment, '//')) {
+
+          /**
+           * Filter out "*" and "@method"
+           */
+          $filtered = array_diff(
+            array_filter(explode(' ', $comment)
+          ), ['*', '@method']);
+
+          /**
+           * Return the name of the method
+           */
+          $method = array_first($filtered, function($value) {
+            if (ends_with($value, '()')) return $value;
+          });
+
+          /**
+           * Bind new method to $class
+           */
+          if ($method) {
+            $this->bind($class, substr($method, 0, strlen($method) - 2), $closure);
+          }
+
+        }
+
+      });
+    }, $methods);
+  }
+
+  /**
    * Add custom static function
    *
    * @param string $class
