@@ -14,4 +14,9 @@ class BaseException extends Exception
    * @var int
    */
   protected $statusCode = 500;
+
+  /**
+   * {@inheritDoc}
+   */
+  protected $message = 'Something went wrong';
 }
