@@ -9,6 +9,16 @@ use Modulus\Upstart\BootableService;
 class EloquentHandler extends BootableService
 {
   /**
+   * {@inheritDoc}
+   */
+  protected function boot()
+  {
+    $this->setup(config('database.default'))::start();
+
+    return $this->hook('db', Capsule::class, BootableService::CREATE);
+  }
+
+  /**
    * Setup Eloquent
    *
    * @return DB
