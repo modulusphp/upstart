@@ -88,6 +88,23 @@ class Handler
   }
 
   /**
+   * Get exception status code
+   *
+   * @param mixed $exception
+   * @return string
+   */
+  private function getTitle($exception)
+  {
+    if (method_exists($exception, 'getTitle')) {
+      $title = $exception->getTitle();
+
+      if (!in_array($title, ['', null])) return $title;
+    }
+
+    return self::ERROR_500_TITLE;
+  }
+
+  /**
    * Expects rest
    *
    * @param Request $request
