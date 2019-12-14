@@ -34,4 +34,18 @@ class BootableService
   {
     //
   }
+
+  /**
+   * Return a app hookable class
+   *
+   * @param string $name
+   * @param mixed $class
+   * @return array
+   */
+  protected function hook(string $name, $class, ?bool $create = false) : array
+  {
+    if ($create) Application::addToCreateList($name);
+
+    return [$name => $class];
+  }
 }
