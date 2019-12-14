@@ -22,4 +22,11 @@ class Service
    * @var string
    */
   public const HOME = '/home';
+
+  /**
+   * Application router
+   *
+   * @var Route $route
+   */
+  protected $route;
 }
