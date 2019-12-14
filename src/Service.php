@@ -37,6 +37,16 @@ class Service
   }
 
   /**
+   * Start service
+   *
+   * @return void
+   */
+  public function start()
+  {
+    $this->boot();
+  }
+
+  /**
    * Extendable class
    *
    * @param string $class
