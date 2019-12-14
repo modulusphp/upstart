@@ -14,4 +14,15 @@ class Service
    * @var Application $app
    */
   protected $app;
+
+  /**
+   * Create a new service
+   *
+   * @param Application $app
+   * @return void
+   */
+  public function __construct(Application $app)
+  {
+    $this->app = $app;
+  }
 }
