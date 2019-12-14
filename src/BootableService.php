@@ -65,4 +65,16 @@ class BootableService
       $app->setHook([$name => is_array($class) ? $class[0] : $class]);
     }
   }
+
+  /**
+   * Start service
+   *
+   * @return array|void
+   */
+  public function start($app = null)
+  {
+    $this->app = $app;
+
+    return $this->boot();
+  }
 }
