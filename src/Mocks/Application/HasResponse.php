@@ -49,6 +49,16 @@ trait HasResponse
   }
 
   /**
+   * Get application error
+   *
+   * @return mixed
+   */
+  public function getError()
+  {
+    return $this->error;
+  }
+
+  /**
    * Set application error
    *
    * @param mixed $error
