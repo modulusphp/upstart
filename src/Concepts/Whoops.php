@@ -17,6 +17,17 @@ use Modulus\Upstart\Whoops\{
 class Whoops
 {
   /**
+   * Get whoops handler
+   *
+   * @param array $config
+   * @return Handler
+   */
+  private static function getWhoopsHandler(array $config = [])
+  {
+    return config('app.debug')) ? self::getDebugHandler($config) : self::getProductionHandler();
+  }
+
+  /**
    * Get production handler
    *
    * @return ViewHandler
