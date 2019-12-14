@@ -6,13 +6,15 @@ use Countable;
 use IteratorAggregate;
 use Modulus\Upstart\Mocks\Application\{
   HasBase,
-  HasHooks
+  HasHooks,
+  HasPrototyping
 };
 
 class Application implements Countable, IteratorAggregate
 {
   use HasBase;
   use HasHooks;
+  use HasPrototyping;
 
   /**
    * Static application
