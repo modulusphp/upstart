@@ -65,4 +65,20 @@ trait HasBootableServices
 
     return $this;
   }
+
+  /**
+   * Create application aliases
+   *
+   * @return Application
+   */
+  private function withAliases()
+  {
+    $aliases = $this->config && isset($this->config['app']['aliases']) ? $this->config['app']['aliases'] : [];
+
+    foreach($aliases as $alias => $class) {
+      class_alias($class, $alias);
+    }
+
+    return $this;
+  }
 }
