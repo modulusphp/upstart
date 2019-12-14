@@ -110,4 +110,20 @@ trait HasBase
 
     return Application::$key;
   }
+
+  /**
+   * Start and run application
+   *
+   * @throws ApplicationHasStartedException
+   * @return mixed
+   */
+  public function run()
+  {
+    if ($this->started)
+      throw new ApplicationHasStartedException;
+
+    $this->withServices();
+
+    $this->started = true;
+  }
 }
