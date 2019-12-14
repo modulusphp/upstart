@@ -54,4 +54,26 @@ trait HasPrototyping
 
     return $class::static($method, $closure);
   }
+
+  /**
+   * Add custom property
+   *
+   * @param string $class
+   * @param string $property
+   * @param Closure $closure
+   * @return mixed
+   */
+  public function prop(string $class, string $property, Closure $closure)
+  {
+    if (!class_exists($class)) throw new ClassDoesNotExistException("Class {$class} does not exist");
+
+    if (!in_array(
+      Extendable::class,
+      array_keys((new ReflectionClass($class))->getTraits()))
+    ) {
+      throw new CannotExtendClassException("Cannot extend \"{$class}::class\"");
+    }
+
+    return $class::prop($property, $closure);
+  }
 }
