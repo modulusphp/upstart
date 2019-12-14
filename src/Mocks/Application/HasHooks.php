@@ -64,6 +64,17 @@ trait HasHooks
   }
 
   /**
+   * Get registered hook
+   *
+   * @param string $property
+   * @return mixed
+   */
+  public function __get(string $property)
+  {
+    return isset(Application::$hooks[$property]) ? (Application::shouldCreate($property) ? new Application::$hooks[$property] : Application::$hooks[$property]) : null;
+  }
+
+  /**
    * Check if property should be created
    *
    * @param string $property
