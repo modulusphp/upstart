@@ -94,4 +94,14 @@ trait HasHooks
   {
     return count(Application::$hooks);
   }
+
+  /**
+   * Iterate through the hooks
+   *
+   * @return null|array
+   */
+  public function getIterator() : ?array
+  {
+    return Application::$hooks;
+  }
 }
