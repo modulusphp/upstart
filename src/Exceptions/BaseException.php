@@ -19,4 +19,11 @@ class BaseException extends Exception
    * {@inheritDoc}
    */
   protected $message = 'Something went wrong';
+
+  /**
+   * Application title
+   *
+   * @var string
+   */
+  protected $title = 'Oops, something is not working';
 }
