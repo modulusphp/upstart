@@ -24,6 +24,20 @@ class Handler
   protected const ERROR_500_TITLE = 'Oops, something is not working';
 
   /**
+   * Render errors
+   *
+   * @param \Modulus\Http\Request
+   * @param \Exception $exception
+   * @return mixed
+   */
+  public function render($request, $exception)
+  {
+    if ($this->shouldRest($request)) return $this->toRest($request, $exception);
+    
+    return $this->toView($request, $exception);
+  }
+
+  /**
    * Prepare the exception
    *
    * @param \Exception $exception
