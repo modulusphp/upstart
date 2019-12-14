@@ -21,6 +21,11 @@ class BootableService
   protected const DONT_CREATE = false;
 
   /**
+   * @var \Modulus\Upstart\Application $app
+   */
+  protected $app;
+
+  /**
    * Boot service
    *
    * @return array|void $this->hook
