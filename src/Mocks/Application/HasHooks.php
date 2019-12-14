@@ -52,4 +52,14 @@ trait HasHooks
   {
     return isset(array_keys(self::$hooks)[$name]);
   }
+
+  /**
+   * Get all registered hooks
+   *
+   * @return array
+   */
+  public function getHooks() : array
+  {
+    return Application::$hooks;
+  }
 }
