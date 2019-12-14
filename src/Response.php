@@ -11,6 +11,21 @@ use Modulus\Utility\Groupable;
 class Response
 {
   /**
+   * Make application response
+   *
+   * @param Application $app
+   * @return 
+   */
+  public static function make(Application $app)
+  {
+    /** Run application */
+    $app->run();
+
+    /** Get application response */
+    return Response::build($app->getResponse());
+  }
+
+  /**
    * Handle application errors
    *
    * @param Exception $exception
