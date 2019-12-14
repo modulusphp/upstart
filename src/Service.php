@@ -25,4 +25,19 @@ class Service
   {
     $this->app = $app;
   }
+
+  /**
+   * Extendable class
+   *
+   * @param string $class
+   * @return Driver
+   */
+  public function base(string $class) : Driver
+  {
+    if (!class_exists($class)) throw new Exception('Class does not exist');
+
+    if (!method_exists($class, 'register')) throw new Exception('Base class doesn\'t allow driver registrations');
+
+    return new Driver($class);
+  }
 }
