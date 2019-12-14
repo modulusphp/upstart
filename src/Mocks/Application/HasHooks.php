@@ -84,4 +84,14 @@ trait HasHooks
   {
     return isset(Application::$create[$property]);
   }
+
+  /**
+   * Get total count of hooks
+   *
+   * @return int
+   */
+  public function count() : int
+  {
+    return count(Application::$hooks);
+  }
 }
