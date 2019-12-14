@@ -52,6 +52,16 @@ class Service
   }
 
   /**
+   * Start resolver
+   *
+   * @return void
+   */
+  public function start()
+  {
+    $this->boot();
+  }
+
+  /**
    * Build and start service
    *
    * @return void
