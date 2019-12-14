@@ -39,6 +39,23 @@ class Handler
   }
 
   /**
+   * Render rest errors
+   *
+   * @param \Modulus\Http\Request
+   * @param \Exception $exception
+   * @return mixed
+   */
+  private function toRest($request, $exception)
+  {
+    $code = $this->getStatusCode($exception);
+
+    return response()->json([
+      'message' => $this->getMessage($exception),
+      'code' => $code
+    ], $code);
+  }
+
+  /**
    * Render view errors
    *
    * @param \Modulus\Http\Request
