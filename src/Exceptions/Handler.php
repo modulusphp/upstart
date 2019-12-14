@@ -71,6 +71,23 @@ class Handler
   }
 
   /**
+   * Get exception status code
+   *
+   * @param mixed $exception
+   * @return int
+   */
+  private function getStatusCode($exception)
+  {
+    if (method_exists($exception, 'getStatusCode')) {
+      $code = $exception->getStatusCode();
+
+      if (in_array($code, array_keys(Status::CODE))) return $code;
+    }
+
+    return 500;
+  }
+
+  /**
    * Expects rest
    *
    * @param Request $request
