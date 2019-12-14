@@ -26,4 +26,15 @@ trait HasResponse
    * @var Request
    */
   private $request;
+
+  /**
+   * Set application response
+   *
+   * @param mixed $response
+   * @return void
+   */
+  public function setResponse($response)
+  {
+    $this->response = $response;
+  }
 }
