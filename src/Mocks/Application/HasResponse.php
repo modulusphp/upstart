@@ -78,4 +78,14 @@ trait HasResponse
   {
     return $this->error ? true : false;
   }
+
+  /**
+   * Get application request
+   *
+   * @return Request
+   */
+  public function getRequest()
+  {
+    return $this->request ?? $this->request = new Request(array_merge($_POST, $_FILES));
+  }
 }
