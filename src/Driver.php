@@ -23,4 +23,17 @@ class Driver
   {
     $this->base = $class;
   }
+
+  /**
+   * Register a new driver
+   *
+   * @param string $name Name of the driver
+   * @param string $driver Driver class
+   */
+  public function register(string $name, string $driver)
+  {
+    if (!class_exists($driver)) throw new Exception('Driver does not exist');
+
+    $this->base::register($name, $driver);
+  }
 }
