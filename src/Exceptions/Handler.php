@@ -39,6 +39,23 @@ class Handler
   }
 
   /**
+   * Get exception view
+   *
+   * @param mixed $exception
+   * @return string
+   */
+  private function getView($exception)
+  {
+    if (method_exists($exception, 'getView')) {
+      $view = $exception->getView();
+
+      if (is_string($view)) return $view;
+    }
+
+    return 'app.errors.default';
+  }
+
+  /**
    * Expects rest
    *
    * @param Request $request
