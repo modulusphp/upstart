@@ -32,4 +32,19 @@ trait HasBootableServices
 
     return $this;
   }
+
+  /**
+   * Configure view directives
+   *
+   * @return Application
+   */
+  private function withDirectives()
+  {
+    Using::$engine      = $this->config['view']['engine'];
+    Using::$views       = $this->config['view']['views'];
+    Partial::$views     = $this->config['view']['views'];
+    Partial::$extension = $this->config['view']['extension'];
+
+    return $this;
+  }
 }
