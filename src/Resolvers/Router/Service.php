@@ -29,4 +29,15 @@ class Service
    * @var Route $route
    */
   protected $route;
+
+  /**
+   * Create a new service
+   *
+   * @param Application $app
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->route = new Route;
+  }
 }
