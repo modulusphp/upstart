@@ -13,4 +13,14 @@ class Application implements Countable, IteratorAggregate
    * @var Application|null
    */
   protected static $app;
+
+  /**
+   * Get application
+   *
+   * @return Application|null
+   */
+  public static function get()
+  {
+    return Application::$app;
+  }
 }
