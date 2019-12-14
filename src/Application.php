@@ -8,7 +8,8 @@ use Modulus\Upstart\Mocks\Application\{
   HasBase,
   HasHooks,
   HasResponse,
-  HasPrototyping
+  HasPrototyping,
+  HasBootableServices
 };
 
 class Application implements Countable, IteratorAggregate
@@ -17,6 +18,7 @@ class Application implements Countable, IteratorAggregate
   use HasHooks;
   use HasResponse;
   use HasPrototyping;
+  use HasBootableServices;
 
   /**
    * Static application
