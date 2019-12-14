@@ -22,4 +22,20 @@ class ApplicationConfigHandler extends BootableService
     $this->bootstrap = $root . 'bootstrap';
     $this->autoCache = $autoCache;
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  protected function boot()
+  {
+    $config = $this->get();
+
+    BaseConfig::boot($config);
+
+    if (!$this->cacheExists()) {
+      $this->save($config);
+    }
+
+    return $this->hook('config', $config);
+  }
 }
