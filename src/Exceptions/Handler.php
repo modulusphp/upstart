@@ -56,6 +56,21 @@ class Handler
   }
 
   /**
+   * Get error message
+   *
+   * @param mixed $exception
+   * @return string
+   */
+  private function getMessage($exception)
+  {
+    $message = $exception instanceof BaseException ? $exception->getMessage() : self::ERROR_500_MESSAGE;
+
+    if (in_array($message, ['', null])) return self::ERROR_500_MESSAGE;
+    
+    return $message;
+  }
+
+  /**
    * Expects rest
    *
    * @param Request $request
