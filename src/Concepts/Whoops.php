@@ -17,6 +17,16 @@ use Modulus\Upstart\Whoops\{
 class Whoops
 {
   /**
+   * Get production handler
+   *
+   * @return ViewHandler
+   */
+  private static function getProductionHandler()
+  {
+    return new ViewHandler((new \Modulus\Hibernate\Logging\MonologBase)->log());
+  }
+
+  /**
    * Get development handler
    *
    * @param array $config
