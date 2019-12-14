@@ -19,4 +19,15 @@ trait HasHooks
    * @var array $create
    */
   private static $create = [];
+
+  /**
+   * Add service to create list
+   *
+   * @param string $name
+   * @return void
+   */
+  public static function addToCreateList(string $name)
+  {
+    Application::$create = array_merge(Application::$create, [$name]);
+  }
 }
