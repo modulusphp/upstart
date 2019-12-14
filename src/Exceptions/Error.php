@@ -47,4 +47,17 @@ trait Error
   {
     return $this->title;
   }
+
+  /**
+   * Set view path
+   *
+   * @param string $view
+   * @return self $this
+   */
+  public function setView(string $view)
+  {
+    $this->view = $view;
+
+    return $this;
+  }
 }
