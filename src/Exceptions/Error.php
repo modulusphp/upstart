@@ -17,4 +17,14 @@ trait Error
       $this->{$key} = $value;
     }
   }
+
+  /**
+   * Get status code
+   *
+   * @return int
+   */
+  public final function getStatusCode()
+  {
+    return $this->statusCode;
+  }
 }
