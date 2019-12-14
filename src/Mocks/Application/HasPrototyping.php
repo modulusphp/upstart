@@ -76,4 +76,60 @@ trait HasPrototyping
 
     return $class::prop($property, $closure);
   }
+
+  /**
+   * Add multiple props at the same time
+   *
+   * @param string $class
+   * @param array $props
+   */
+  public function hasManyProps(string $class, array $props)
+  {
+    /**
+     * Map through the functions
+     *
+     * @param Closure $closure
+     */
+    array_map(function ($closure) use ($class) {
+
+      $info = new ReflectionFunction($closure);
+
+      $doc  = explode(PHP_EOL, $info->getDocComment());
+
+      /**
+       * Filter out the stuff that's not needed
+       */
+      array_filter($doc, function($comment) use ($class, $closure) {
+
+        /**
+         * Register a new prop if its not commented out
+         */
+        if (str_contains($comment, '@var') && !str_contains($comment, '//')) {
+
+          /**
+           * Filter out "*" and "@var"
+           */
+          $filtered = array_diff(
+            array_filter(explode(' ', $comment)
+          ), ['*', '@var']);
+
+          /**
+           * Return the name of the property
+           */
+          $property = array_last($filtered, function($value) {
+            if (starts_with($value, '$') && preg_match("/[a-z]|[A-Z]/", $value)) return $value;
+          });
+
+          /**
+           * Bind new property to $class
+           */
+          if ($property) {
+            $this->prop($class, substr($property, 1), $closure);
+          }
+
+        }
+
+      });
+    }, $props);
+  }
 }
