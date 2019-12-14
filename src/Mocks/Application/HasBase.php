@@ -73,4 +73,24 @@ trait HasBase
   {
     return Application::$key ? false : Application::$key = $key;
   }
+
+  /**
+   * Get application key
+   *
+   * @return string
+   */
+  public function key(bool $raw = true)
+  {
+    return $raw ? $this->decodedKey() : Application::$key;
+  }
+
+  /**
+   * Get application key
+   *
+   * @return string
+   */
+  public function getKey(bool $raw = true)
+  {
+    return $this->key($raw);
+  }
 }
