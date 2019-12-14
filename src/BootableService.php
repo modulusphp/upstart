@@ -14,6 +14,13 @@ class BootableService
   protected const CREATE = true;
 
   /**
+   * Return class as it is
+   *
+   * @var bool
+   */
+  protected const DONT_CREATE = false;
+
+  /**
    * Boot service
    *
    * @return array|void $this->hook
