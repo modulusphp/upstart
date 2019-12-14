@@ -68,4 +68,14 @@ trait HasResponse
   {
     $this->error = $error;
   }
+
+  /**
+   * Check if error is set
+   *
+   * @return bool
+   */
+  public function hasError()
+  {
+    return $this->error ? true : false;
+  }
 }
