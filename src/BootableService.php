@@ -48,4 +48,21 @@ class BootableService
 
     return [$name => $class];
   }
+
+  /**
+   * Create first citizen class
+   *
+   * @param mixed $hook
+   * @param Application $app
+   * @return void
+   */
+  public function is_hook($hook, Application $app)
+  {
+    if (is_array($hook) && $hook !== []) {
+      $name  = array_key_first($hook);
+      $class = array_values($hook);
+
+      $app->setHook([$name => is_array($class) ? $class[0] : $class]);
+    }
+  }
 }
