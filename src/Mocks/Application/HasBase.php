@@ -15,6 +15,13 @@ trait HasBase
   private $root;
 
   /**
+   * Application has started
+   *
+   * @var bool $started
+   */
+  private $started = false;
+
+  /**
    * Create application
    *
    * @param string $root
