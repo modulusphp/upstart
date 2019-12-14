@@ -62,4 +62,15 @@ trait HasHooks
   {
     return Application::$hooks;
   }
+
+  /**
+   * Check if property should be created
+   *
+   * @param string $property
+   * @return bool
+   */
+  private static function shouldCreate($property) : bool
+  {
+    return isset(Application::$create[$property]);
+  }
 }
