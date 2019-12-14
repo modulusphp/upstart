@@ -37,4 +37,14 @@ trait Error
   {
     return $this->view;
   }
+
+  /**
+   * Get page title
+   *
+   * @return string
+   */
+  public final function getTitle()
+  {
+    return $this->title;
+  }
 }
