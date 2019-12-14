@@ -41,4 +41,15 @@ trait HasHooks
   {
     self::$hooks = array_merge(self::$hooks, $hook);
   }
+
+  /**
+   * Check if hook has been registered
+   *
+   * @param string $name
+   * @return bool
+   */
+  public static function hasHook(string $name)
+  {
+    return isset(array_keys(self::$hooks)[$name]);
+  }
 }
