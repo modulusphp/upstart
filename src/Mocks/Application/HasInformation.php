@@ -16,4 +16,14 @@ trait HasInformation
 
     return file_exists('composer.json') ? 'composer.json' : $upstart;
   }
+
+  /**
+   * Get composer file
+   *
+   * @return object
+   */
+  private function info() : object
+  {
+    return json_decode(file_get_contents($this->__composer()));
+  }
 }
