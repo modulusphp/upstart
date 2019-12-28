@@ -88,6 +88,16 @@ class Plugins implements Countable, Iterator
   }
 
   /**
+   * Rewind the key position.
+   *
+   * @return void
+   */
+  public function rewind()
+  {
+    $this->position = 0;
+  }
+
+  /**
    * Swop plugin for an updated one
    *
    * @param Base $plugin
