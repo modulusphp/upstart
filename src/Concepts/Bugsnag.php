@@ -2,6 +2,7 @@
 
 namespace Modulus\Upstart\Concepts;
 
+use Exception;
 use Bugsnag\Client;
 use Bugsnag\Handler;
 
@@ -16,7 +17,11 @@ class Bugsnag
   {
     $client = Client::make();
 
-    Handler::register($client);
+    try {
+      Handler::register($client);
+    } catch (Exception $e) {
+      //
+    }
 
     return $client;
   }
