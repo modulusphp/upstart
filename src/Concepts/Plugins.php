@@ -4,6 +4,7 @@ namespace Modulus\Upstart\Concepts;
 
 use Iterator;
 use Countable;
+use Modulus\Upstart\Plugin\Base;
 
 class Plugins implements Countable, Iterator
 {
@@ -37,5 +38,17 @@ class Plugins implements Countable, Iterator
     }
 
     return $plugins;
+  }
+
+  /**
+   * Swop plugin for an updated one
+   *
+   * @param Base $plugin
+   * @param int $key
+   * @return void
+   */
+  public function swop(Base $plugin, $key) : void
+  {
+    $this->registered[$key] = $plugin;
   }
 }
