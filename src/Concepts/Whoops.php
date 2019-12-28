@@ -65,7 +65,11 @@ class Whoops
    */
   private static function getProductionHandler()
   {
-    return new ViewHandler((new \Modulus\Hibernate\Logging\MonologBase)->log());
+    if (class_exists(\Modulus\Hibernate\Logging\MonologBase::class)) {
+      return new ViewHandler((new \Modulus\Hibernate\Logging\MonologBase)->log());
+    }
+
+    return new ViewHandler;
   }
 
   /**
