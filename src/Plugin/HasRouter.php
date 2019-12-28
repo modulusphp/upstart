@@ -73,4 +73,16 @@ trait HasRouter
   {
     //
   }
+
+  /**
+   * Start plugin router
+   *
+   * @return void
+   */
+  public function bootRouter() : void
+  {
+    $this->router->group(['namespace' => $this->namespace], function () {
+      $this->routes();
+    });
+  }
 }
