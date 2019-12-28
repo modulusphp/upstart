@@ -1,4 +1,4 @@
-# Modulus Hibernate Component
+# Modulus Upstart Component
 
 This component is responsible for starting Craftsman and your Modulus Application.
 
@@ -6,6 +6,8 @@ Install
 -------
 
 This package will be automatically installed with the Modulus Framework.
+
+> Note: Upstart is not configured in older versions of Modulus
 
 ```
 composer require modulusphp/upstart
