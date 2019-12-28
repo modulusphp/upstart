@@ -29,6 +29,18 @@ class Base
   }
 
   /**
+   * Start plugin
+   *
+   * @return void
+   */
+  public function start(Application $app) : void
+  {
+    $this->app = $app;
+
+    $this->boot();
+  }
+
+  /**
    * Extendable class
    *
    * @param string $class
