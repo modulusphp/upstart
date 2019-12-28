@@ -49,6 +49,17 @@ trait HasPaths
   }
 
   /**
+   * Get database path
+   *
+   * @param string $path
+   * @return string
+   */
+  public function getDatabasePath(string $path = null)
+  {
+    return $this->getPath('database', $path);
+  }
+
+  /**
    * Common path
    *
    * @param string $name
