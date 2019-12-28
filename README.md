@@ -73,7 +73,14 @@ $app->make(
 return $app;
 ```
 
-Make sure, `App\Http\HttpFoundation::class` extends `Modulus\Http\Kernel`, `App\Exceptions\Handler::class` extends `Modulus\Upstart\Exceptions\Handler::class`, `App\Resolvers\RouterResolver::class` extends `Modulus\Upstart\Resolvers\Router\Service::class` and `App\Resolvers\AppServiceResolver::class` extends `Modulus\Upstart\Service::class`.
+Make sure the following classes, extend:
+
+Class | Extend
+------|--------
+`App\Http\HttpFoundation::class` | `Modulus\Http\Kernel::class`
+`App\Exceptions\Handler::class` | `Modulus\Upstart\Exceptions\Handler::class`
+`App\Resolvers\RouterResolver::class` | `Modulus\Upstart\Resolvers\Router\Service::class` 
+`App\Resolvers\AppServiceResolver::class` | `Modulus\Upstart\Service::class`.
 
 Now, head over to `public/index.php` and replace the contents with:
 
