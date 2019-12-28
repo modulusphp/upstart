@@ -27,6 +27,17 @@ trait HasPaths
   }
 
   /**
+   * Get bootstrap path
+   *
+   * @param string|null $path Path to file or subdirectory
+   * @return string 
+   */
+  public function getBootstrapPath(string $path = null)
+  {
+    return $this->getPath('bootstrap', $path);
+  }
+
+  /**
    * Common path
    *
    * @param string $name
