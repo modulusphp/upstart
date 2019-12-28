@@ -56,4 +56,14 @@ trait HasInformation
   {
     return $this->info()->version ?? null;
   }
+
+  /**
+   * Get application license
+   *
+   * @return string
+   */
+  public function license()
+  {
+    return $this->info()->license ?? null;
+  }
 }
