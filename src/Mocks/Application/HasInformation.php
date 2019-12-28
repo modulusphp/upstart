@@ -26,4 +26,14 @@ trait HasInformation
   {
     return json_decode(file_get_contents($this->__composer()));
   }
+
+  /**
+   * Get application name
+   *
+   * @return string
+   */
+  public function name()
+  {
+    return explode('/', $this->info()->name)[1];
+  }
 }
