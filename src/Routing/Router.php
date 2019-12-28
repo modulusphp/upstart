@@ -2,10 +2,53 @@
 
 namespace Modulus\Upstart\Routing;
 
+use AtlantisPHP\Swish\Route;
+use Modulus\Upstart\Application;
+use AtlantisPHP\Swish\SwishHandler;
+use Modulus\Http\Exceptions\BadRequestHttpException;
 use Modulus\Http\Middleware as HttpMiddleware;
+use Modulus\Http\Exceptions\NotFoundHttpException;
 
 class Router
 {
+  /**
+   * Prepare the router
+   *
+   * @param Application $app
+   * @return void
+   */
+  private static function prepare($app)
+  {
+    SwishHandler::setNamespace($app->services->getRouterResolver()->getNamespace());
+
+    SwishHandler::fail(function ($isAjax, $code) {
+      if ($code == 404) throw new NotFoundHttpException($code);
+
+      throw new BadRequestHttpException($code);
+    });
+
+    SwishHandler::before(function($route, $callback) use ($app) {
+      $route->variables = (new Reflect($app))->handle($callback, $route->variables, $route);
+
+      /** get all registered middleware */
+      foreach (Route::$routes as $key => $value) {
+        if ($value['id'] == $route->id) $route->middleware = array_merge($value['middleware'], self::getMiddleware($callback));
+      }
+
+      $request = Reflect::$request ?? $app->getRequest();
+      $request->route = $route;
+
+      Middleware::setFoundation($app->services->getHttpFoundation())
+                ->run($request, $route, substr($route->file, 0, strlen($route->file) - 4));
+
+      return $route->variables;
+    });
+
+    SwishHandler::after(function($route) use ($app) {
+      $app->setResponse($route->response);
+    });
+  }
+
   /**
    * Get middleware from controller
    *
