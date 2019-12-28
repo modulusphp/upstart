@@ -28,4 +28,14 @@ trait HasConsole
 
     throw new Exception('Kernel does not exist');
   }
+
+  /**
+   * Check if application is in cli mode
+   *
+   * @return bool
+   */
+  public function isConsole() : bool
+  {
+    return (strtolower(php_sapi_name()) === 'cli');
+  }
 }
