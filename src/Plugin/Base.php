@@ -19,6 +19,13 @@ class Base
   protected $app;
 
   /**
+   * Path containing craftsman commands
+   *
+   * @var string $commands
+   */
+  protected $commands;
+
+  /**
    * Build plugin
    *
    * @return void
