@@ -12,6 +12,13 @@ class Base
   use HasScheduler;
 
   /**
+   * Application container
+   *
+   * @var Application $app
+   */
+  protected $app;
+
+  /**
    * Extendable class
    *
    * @param string $class
