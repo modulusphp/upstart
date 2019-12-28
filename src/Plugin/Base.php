@@ -19,6 +19,16 @@ class Base
   protected $app;
 
   /**
+   * Boot plugin
+   *
+   * @return void
+   */
+  protected function boot() : void
+  {
+    //
+  }
+
+  /**
    * Extendable class
    *
    * @param string $class
