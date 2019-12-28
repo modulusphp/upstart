@@ -19,6 +19,16 @@ class Base
   protected $app;
 
   /**
+   * Build plugin
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->configureNamespace();
+  }
+
+  /**
    * Boot plugin
    *
    * @return void
