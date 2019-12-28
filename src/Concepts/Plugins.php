@@ -68,6 +68,16 @@ class Plugins implements Countable, Iterator
   }
 
   /**
+   * Get the current key.
+   *
+   * @return int
+   */
+  public function key()
+  {
+    return $this->position;
+  }
+
+  /**
    * Swop plugin for an updated one
    *
    * @param Base $plugin
