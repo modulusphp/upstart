@@ -36,4 +36,14 @@ trait HasInformation
   {
     return explode('/', $this->info()->name)[1];
   }
+
+  /**
+   * Get application description
+   *
+   * @return string
+   */
+  public function description()
+  {
+    return $this->info()->description ?? null;
+  }
 }
