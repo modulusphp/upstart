@@ -72,7 +72,7 @@ class Whoops
    * Get development handler
    *
    * @param array $config
-   * @return PrettyPageHandler $handler
+   * @return DebugHandler $handler
    */
   private static function getDebugHandler(array $config = [])
   {
