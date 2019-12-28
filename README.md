@@ -78,7 +78,7 @@ return $app;
 Make sure the following classes, extend:
 
 Class | Extend
-------|--------
+:------|:--------
 `App\Http\HttpFoundation::class` | `Modulus\Http\Kernel::class`
 `App\Exceptions\Handler::class` | `Modulus\Upstart\Exceptions\Handler::class`
 `App\Resolvers\RouterResolver::class` | `Modulus\Upstart\Resolvers\Router\Service::class` 
