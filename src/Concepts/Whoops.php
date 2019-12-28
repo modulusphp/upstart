@@ -55,7 +55,7 @@ class Whoops
    */
   private static function getWhoopsHandler(array $config = [])
   {
-    return config('app.debug')) ? self::getDebugHandler($config) : self::getProductionHandler();
+    return config('app.debug') ? self::getDebugHandler($config) : self::getProductionHandler();
   }
 
   /**
@@ -65,14 +65,18 @@ class Whoops
    */
   private static function getProductionHandler()
   {
-    return new ViewHandler((new \Modulus\Hibernate\Logging\MonologBase)->log());
+    if (class_exists(\Modulus\Hibernate\Logging\MonologBase::class)) {
+      return new ViewHandler((new \Modulus\Hibernate\Logging\MonologBase)->log());
+    }
+
+    return new ViewHandler;
   }
 
   /**
    * Get development handler
    *
    * @param array $config
-   * @return PrettyPageHandler $handler
+   * @return DebugHandler $handler
    */
   private static function getDebugHandler(array $config = [])
   {
