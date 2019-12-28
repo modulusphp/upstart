@@ -17,5 +17,19 @@
       "helpers.php"
     ]
   },
+  "require": {
+    "php": ">=7.3.0",
+    "atlantisphp/swish": "1.5.*",
+    "bugsnag/bugsnag": "^3.14",
+    "illuminate/database": "5.8.*",
+    "modulusphp/directives": "1.9.*",
+    "modulusphp/http": "1.9.*",
+    "modulusphp/console": "1.9.*",
+    "modulusphp/hibernate": "1.9.*",
+    "modulusphp/system": "1.9.*",
+    "modulusphp/utility": "1.9.*",
+    "peppeocchi/php-cron-scheduler": "^2.3",
+    "vlucas/phpdotenv": "^3.0"
+  },
   "minimum-stability": "stable"
 }

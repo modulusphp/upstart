@@ -80,7 +80,7 @@ Class | Extend
 `App\Http\HttpFoundation::class` | `Modulus\Http\Kernel::class`
 `App\Exceptions\Handler::class` | `Modulus\Upstart\Exceptions\Handler::class`
 `App\Resolvers\RouterResolver::class` | `Modulus\Upstart\Resolvers\Router\Service::class` 
-`App\Resolvers\AppServiceResolver::class` | `Modulus\Upstart\Service::class`.
+`App\Resolvers\AppServiceResolver::class` | `Modulus\Upstart\Service::class`
 
 Now, head over to `public/index.php` and replace the contents with:
 
