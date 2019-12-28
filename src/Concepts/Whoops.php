@@ -55,7 +55,7 @@ class Whoops
    */
   private static function getWhoopsHandler(array $config = [])
   {
-    return config('app.debug')) ? self::getDebugHandler($config) : self::getProductionHandler();
+    return config('app.debug') ? self::getDebugHandler($config) : self::getProductionHandler();
   }
 
   /**
