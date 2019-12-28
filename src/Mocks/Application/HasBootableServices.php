@@ -2,6 +2,7 @@
 
 namespace Modulus\Upstart\Mocks\Application;
 
+use AtlantisPHP\Swish\Route;
 use Modulus\Directives\Using;
 use Modulus\Utility\Accessor;
 use Modulus\Directives\Partial;
@@ -40,6 +41,8 @@ trait HasBootableServices
    */
   private function withServices()
   {
+    /** @var Application $this */
+
     foreach ($this->bootable as $service) {
 
       if ($service instanceof ApplicationServices) {
@@ -49,7 +52,9 @@ trait HasBootableServices
               ->withView()
               ->withAliases()
               ->withRouter()
-              ->startTheRest();
+              ->bootApp()
+              ->dispatchRoutes()
+              ->addCommands();
 
       } else if ($service instanceof BootableService) {
         $service->is_hook($service->start(), $this);
@@ -61,8 +66,7 @@ trait HasBootableServices
     }
 
     /** Boot cli if app is being called from craftsman */
-    if ($this->kernel)
-      $this->kernel->run();
+    if ($this->isConsole()) $this->kernel->run();
   }
 
   /**
@@ -121,6 +125,13 @@ trait HasBootableServices
    */
   private function withRouter()
   {
+    /** @var \Modulus\Upstart\Plugin\Base $plugin*/
+
+    foreach($this->plugins as $plugin) {
+      $plugin->setRouter(new Route)
+            ->bootRouter();
+    }
+
     Router::make($this);
 
     return $this;
@@ -131,9 +142,47 @@ trait HasBootableServices
    *
    * @return Application
    */
-  private function startTheRest()
+  private function bootApp()
   {
     $this->services->getAppServiceResolver()->start();
+
+    /** @var \Modulus\Upstart\Plugin\Base $plugin*/
+
+    foreach($this->plugins as $plugin) {
+      $plugin->start($this);
+    }
+
+    return $this;
+  }
+
+  /**
+   * Load routes
+   *
+   * @return Application
+   */
+  private function dispatchRoutes()
+  {
+    if (!$this->isConsole()) Route::dispatch();
+
+    return $this;
+  }
+
+  /**
+   * Load plugin commands
+   *
+   * @return Application
+   */
+  private function addCommands()
+  {
+    /** @var Application $this */
+    
+    if (!$this->isConsole()) return $this;
+    
+    /** @var \Modulus\Upstart\Plugin\Base $plugin*/
+
+    foreach($this->plugins as $plugin) {
+      if ($plugin->getCommands()) $this->kernel->load($plugin->getCommands(), true);
+    }
 
     return $this;
   }
