@@ -82,6 +82,17 @@ trait HasPaths
   }
 
   /**
+   * Get public path
+   *
+   * @param string $path
+   * @return string
+   */
+  public function getPublicPath(string $path = null)
+  {
+    return $this->getPath('storage' . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'public', $path);
+  }
+
+  /**
    * Common path
    *
    * @param string $name
