@@ -63,4 +63,14 @@ trait HasRouter
 
     return $this;
   }
+
+  /**
+   * Register routes
+   *
+   * @return void
+   */
+  protected function routes() : void
+  {
+    //
+  }
 }
