@@ -14,6 +14,24 @@ trait HasRouter
   protected $router;
 
   /**
+   * Plugin namespace
+   *
+   * @var string $namespace
+   */
+  protected $namespace;
+
+  /**
+   * Set plugin namespace
+   *
+   * @param string $namespace
+   * @return void
+   */
+  public function setNamespace(string $namespace)
+  {
+    $this->namespace = $namespace;
+  }
+
+  /**
    * Set plugin router
    *
    * @param Route $router
