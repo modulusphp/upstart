@@ -13,4 +13,19 @@ class Plugins implements Countable, Iterator
    * @var array $registered
    */
   protected $registered;
+
+  /**
+   * Iterate through plugins and create classes
+   *
+   * @param array $plugins
+   * @return array $plugins
+   */
+  private function getPlugins(array $plugins = [])
+  {
+    foreach(config('app.plugins') as $plugin) {
+      $plugins = array_merge($plugins, [new $plugin]);
+    }
+
+    return $plugins;
+  }
 }
