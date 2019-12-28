@@ -53,6 +53,16 @@ class Base
   }
 
   /**
+   * Get path containing craftsman commands
+   *
+   * @return null|string
+   */
+  public function getCommands() : ?string
+  {
+    return is_string($this->commands) && is_dir($this->commands) ? $this->commands : null;
+  }
+
+  /**
    * Start plugin
    *
    * @return void
