@@ -48,6 +48,16 @@ class Plugins implements Countable, Iterator
   }
 
   /**
+   * Get total count of plugins
+   *
+   * @return int
+   */
+  public function count() : int
+  {
+    return count($this->registered);
+  }
+
+  /**
    * Swop plugin for an updated one
    *
    * @param Base $plugin
