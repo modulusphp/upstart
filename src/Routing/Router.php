@@ -12,6 +12,21 @@ use Modulus\Http\Exceptions\NotFoundHttpException;
 class Router
 {
   /**
+   * Start the router resolver
+   *
+   * @param Application $app
+   * @return 
+   */
+  public static function make(Application $app)
+  {
+    self::prepare($app);
+
+    $app->services
+        ->getRouterResolver()
+        ->start();
+  }
+
+  /**
    * Prepare the router
    *
    * @param Application $app
