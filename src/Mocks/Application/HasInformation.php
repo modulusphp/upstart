@@ -66,4 +66,14 @@ trait HasInformation
   {
     return $this->info()->license ?? null;
   }
+
+  /**
+   * Get application authors
+   *
+   * @return array
+   */
+  public function authors()
+  {
+    return $this->info()->authors ?? null;
+  }
 }
