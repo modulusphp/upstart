@@ -38,6 +38,17 @@ trait HasPaths
   }
 
   /**
+   * Get config path
+   *
+   * @param string|null $path Path to file or subdirectory
+   * @return string 
+   */
+  public function getConfigPath(string $path = null)
+  {
+    return $this->getPath('config', $path);
+  }
+
+  /**
    * Common path
    *
    * @param string $name
