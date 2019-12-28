@@ -63,6 +63,16 @@ class Base
   }
 
   /**
+   * Get path containing database migrations
+   *
+   * @return null|string
+   */
+  public function getMigrations() : ?string
+  {
+    return is_string($this->migrations) && is_dir($this->migrations) ? $this->migrations : null;
+  }
+
+  /**
    * Start plugin
    *
    * @return void
