@@ -71,6 +71,17 @@ trait HasPaths
   }
 
   /**
+   * Get storage path
+   *
+   * @param string $path
+   * @return string
+   */
+  public function getStoragePath(string $path = null)
+  {
+    return $this->getPath('storage', $path);
+  }
+
+  /**
    * Common path
    *
    * @param string $name
