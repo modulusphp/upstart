@@ -16,6 +16,13 @@ class Plugins implements Countable, Iterator
   protected $registered;
 
   /**
+   * The iteration position.
+   *
+   * @var int
+   */
+  protected $position = 0;
+
+  /**
    * Build up the plugins
    *
    * @return void
