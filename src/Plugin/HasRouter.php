@@ -42,6 +42,16 @@ trait HasRouter
   }
 
   /**
+   * Configure namespace
+   *
+   * @return void
+   */
+  private function configureNamespace()
+  {
+    $this->namespace = $this->namespace ? '\\' . $this->namespace : $this->namespace;
+  }
+
+  /**
    * Set plugin router
    *
    * @param Route $router
