@@ -60,6 +60,17 @@ trait HasPaths
   }
 
   /**
+   * Get resources path
+   *
+   * @param string $path
+   * @return string
+   */
+  public function getResourcesPath(string $path = null)
+  {
+    return $this->getPath('resources', $path);
+  }
+
+  /**
    * Common path
    *
    * @param string $name
