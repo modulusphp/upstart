@@ -58,6 +58,16 @@ class Plugins implements Countable, Iterator
   }
 
   /**
+   * Get the current item.
+   *
+   * @return \Modulus\Upstart\Plugin\Base
+   */
+  public function current()
+  {
+    return $this->registered[$this->position];
+  }
+
+  /**
    * Swop plugin for an updated one
    *
    * @param Base $plugin
