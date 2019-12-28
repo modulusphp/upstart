@@ -15,6 +15,16 @@ class Plugins implements Countable, Iterator
   protected $registered;
 
   /**
+   * Build up the plugins
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->registered = $this->getPlugins();
+  }
+
+  /**
    * Iterate through plugins and create classes
    *
    * @param array $plugins
