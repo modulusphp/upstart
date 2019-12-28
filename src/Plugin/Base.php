@@ -26,6 +26,13 @@ class Base
   protected $commands;
 
   /**
+   * Path containing database migrations
+   *
+   * @var string $migrations
+   */
+  protected $migrations;
+
+  /**
    * Build plugin
    *
    * @return void
