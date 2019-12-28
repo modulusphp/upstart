@@ -78,6 +78,16 @@ class Plugins implements Countable, Iterator
   }
 
   /**
+   * Advance the key position.
+   *
+   * @return void
+   */
+  public function next()
+  {
+    $this->position++;
+  }
+
+  /**
    * Swop plugin for an updated one
    *
    * @param Base $plugin
