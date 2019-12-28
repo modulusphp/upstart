@@ -98,6 +98,16 @@ class Plugins implements Countable, Iterator
   }
 
   /**
+   * Is the current key position set?
+   *
+   * @return int
+   */
+  public function valid()
+  {
+    return $this->position < $this->count();
+  }
+
+  /**
    * Swop plugin for an updated one
    *
    * @param Base $plugin
