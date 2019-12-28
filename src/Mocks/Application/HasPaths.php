@@ -25,4 +25,16 @@ trait HasPaths
   {
     return $this->root . ($path ? ltrim($path, '/') : '');
   }
+
+  /**
+   * Common path
+   *
+   * @param string $name
+   * @param string $path
+   * @return string
+   */
+  private function getPath(string $name, string $path = null)
+  {
+    return $this->getRoot($name) . '/' . ($path ? ltrim($path, '/') : '');
+  }
 }
